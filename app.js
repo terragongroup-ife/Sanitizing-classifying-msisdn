@@ -3,6 +3,8 @@ const phone = require ('node-phonenumber');
 const express = require ('express');
 const app = express();
 const bodyParser = require('body-parser');
+const client = require ('./connect.js');
+
 
 //parsing incoming data
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -71,14 +73,8 @@ switch (impThree){
     default: console.log('cannot identify network operator');
     
 }
-// console.log(mno);
 
-const telinfo = [{sanitizedNumber},{network_operator}];
-console.log(telinfo);
-
-res.json(telinfo);
-
-
+module.exports.telinfo = [{sanitizedNumber},{network_operator}];
 
 
 });
@@ -88,3 +84,4 @@ app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`)
   
 });
+
